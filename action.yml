@@ -1,0 +1,32 @@
+name: 'rust-build.action'
+description:
+    'Packages your rust builds into a .exe, .app and the one for linux.'
+author: 'imyanice'
+
+# Add your action's branding here. This will appear on the GitHub Marketplace.
+# https://actions-cool.github.io/github-action-branding/
+branding:
+    icon: 'package'
+    color: 'blue'
+
+# Define your inputs here.
+inputs:
+    targets:
+        description:
+            'List of targets the action should create an executable for'
+        required: true
+        default: ''
+    srcDir:
+        description:
+            'The folder containing the "target" directory. AKA your source
+            folder.'
+        required: false
+        default: './'
+    releaseName:
+        description: 'The name of the release to create'
+    tagName:
+        description: 'The tag name of the release to create'
+
+runs:
+    using: node20
+    main: dist/index.js
